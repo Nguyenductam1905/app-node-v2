@@ -9,10 +9,9 @@ let dotenv = require('dotenv').config()
 const port = dotenv['parsed'].PORT||3000
 
 
-//static file
-// app.router()
-
+//config static file
 app.use(express.static('public'))
+
 
 //set engine
 app.set('views', __dirname + '/views')
