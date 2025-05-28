@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/app.js",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
+    "lint": "eslint 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -16,7 +19,17 @@
   },
   "homepage": "https://github.com/Nguyenductam1905/app-node-v2#readme",
   "description": "",
-  "dependencies": {
-    "express": "^5.1.0"
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.23",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.27.0",
+    "express": "^5.1.0",
+    "install": "^0.13.0",
+    "nodemon": "^3.1.10",
+    "npm": "^11.4.1",
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
