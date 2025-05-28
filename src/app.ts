@@ -1,22 +1,27 @@
 import express from 'express'
+import router from './routes/web'
+import webRoute from './routes/web'
 
 const app = express()
 
 //use .env file
 let dotenv = require('dotenv').config()
-const port = dotenv['parsed'].PORT||3456
+const port = dotenv['parsed'].PORT||3000
 
-//niceeeeee
-app.get('/', (req, res) => {
-  res.send('<h1 style="color:red;">Hello World! 123</h1>')
-})
 
-app.get('/test', (req, res) =>{
-    res.send('test')
-})
+//static file
+// app.router()
+
+app.use(express.static('public'))
+
+//set engine
+app.set('views', __dirname + '/views')
+app.set('view engine', 'ejs')
+
+//route
+webRoute(app)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
-module.exports = app;
