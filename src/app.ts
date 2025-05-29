@@ -17,6 +17,11 @@ app.use(express.static('public'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
+//set body params
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+
 //route
 webRoute(app)
 
