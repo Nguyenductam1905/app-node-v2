@@ -24,10 +24,33 @@ const getAllUserAPI = async () => {
 const deleteUserById = async (id: number) => {
     try {
         const sql = 'DELETE FROM `users` WHERE id = ?';
+        await (await connection).execute(sql, [id]);
     } catch (err) {
         console.log(err);
     }
 }
 
+const getUserById = async (id: number) => {
+    try {
+        const sql = 'SELECT * FROM `users` WHERE id = ?';
+        const data = await (await connection).execute(sql, [id]);
+        return data[0];
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 
-export {handleCreateUser, getAllUserAPI, deleteUserById}
+const updateUserById = async (id: number, fullName: string, email: string, address: string) => {
+    try {
+        const sql = 'UPDATE `users` SET `fullName` = ?, `email` = ?, `address` = ? WHERE id = ?';
+        const values = [fullName, email, address, id];
+        await (await connection).execute(sql, values);
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+
+export {handleCreateUser, getAllUserAPI, deleteUserById, getUserById, updateUserById}

@@ -20,6 +20,7 @@
         <table class="table table-hover table-striped table-bordered">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Address</th>
@@ -28,6 +29,10 @@
             <tbody>
                 <% users.forEach(function(user) {%>
                     <tr>
+                        <td>
+                            <%=user.id%>
+                        </td>
+
                         <td>
                             <%=user.fullName%>
                         </td>
@@ -39,6 +44,17 @@
 
                         <td>
                             <%=user.address%>
+                        </td>
+
+                        <td style="display: flex; gap: 10px; align-items: center;">
+                            <form action="/handle-delete-user/<%=user.id%>" method="post">
+                                <input type="hidden" name="id" value="<%=user.id%>">
+                                <button type="submit" class="btn btn-danger">Delete <%=user.id%></button>
+                            </form>
+                            <form action="/view-detail-user/<%=user.id%>" method="get">
+                                <input type="hidden" name="id" value="<%=user.id%>">
+                                <button type="submit" class="btn btn-warning">View detail</button>
+                            </form>
                         </td>
                     </tr>
                     %>
