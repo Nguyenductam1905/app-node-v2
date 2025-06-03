@@ -25,15 +25,14 @@ const handleDeleteUser = async (req:Request, res:Response) => {
 
 
 const handleViewUser = async (req:Request, res:Response) => {
-    const data =await getUserById(parseInt(req.params.id))
-    const user = JSON.parse(JSON.stringify(data))
-    res.render('view-detail-user', {user:user[0]})
+    const user =await getUserById(parseInt(req.params.id))
+    res.render('view-detail-user', {user:user})
 }
 
 const handleUpdateUser = async (req:Request, res:Response) => {
-    const {fullName, email, address} = req.body
+    const {name, email, address} = req.body
     const id = parseInt(req.params.id)
-    await updateUserById(id, fullName, email, address)
+    await updateUserById(id, name, email, address)
     res.redirect('/')
 }
 
