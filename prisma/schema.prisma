@@ -9,8 +9,77 @@ datasource db {
 }
 
 model User {
-  id      Int    @id @default(autoincrement())
-  name    String @db.VarChar(255)
-  email   String @db.VarChar(255)
-  address String @db.VarChar(255)
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(255)
+  email       String        @db.VarChar(255) @unique
+  address     String        @db.VarChar(255)
 }
+
+// model User {
+//   id          Int           @id @default(autoincrement())
+//   name        String        @db.VarChar(255)
+//   email       String        @db.VarChar(255) @unique
+//   address     String?       @db.VarChar(255)
+//   @@index([email])
+// }
+
+// model Role {
+//   id          Int           @id @default(autoincrement())
+//   name        String        @db.VarChar(255)
+//   description String?
+//   createdAt   DateTime      @default(now())
+// }
+
+// model Order {
+//   id          Int           @id @default(autoincrement())
+//   userId      Int
+//   totalPrice  Int
+//   status      OrderStatus   @default(PENDING)
+//   products    OrderProduct[]
+//   createdAt   DateTime      @default(now())
+//   updatedAt   DateTime      @updatedAt
+
+//   @@index([userId])
+// }
+
+// enum OrderStatus {
+//   PENDING
+//   PROCESSING
+//   SHIPPED
+//   DELIVERED
+//   CANCELLED
+// }
+
+// enum AccountType {
+//   STANDARD
+//   PREMIUM
+//   ADMIN
+// }
+
+// model OrderProduct {
+//   orderId    Int
+//   productId  Int
+//   quantity   Int
+//   order      Order         @relation(fields: [orderId], references: [id])
+//   product    Product       @relation(fields: [productId], references: [id])
+
+//   @@id([orderId, productId])
+// }
+
+// model Product {
+//   id          Int          @id @default(autoincrement())
+//   name        String       @db.VarChar(255)
+//   price       Int
+//   image       String?      @db.VarChar(255)
+//   detailDesc  String       @db.VarChar(255)
+//   shortDesc   String       @db.VarChar(255)
+//   factory     String       @db.VarChar(255)
+//   quantity    Int
+//   target      String       @db.VarChar(255)
+//   sold        Int          @default(0)
+//   category    String       @db.VarChar(255)
+//   orders      OrderProduct[]
+
+//   @@index([category])
+//   @@index([factory])
+// }

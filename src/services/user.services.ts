@@ -3,12 +3,13 @@ import { prisma } from "models/client";
 import connection from "models/database";
 
 const handleCreateUser = async (fullName: string, email: string, address: string) => {
+    const prisma = new PrismaClient();
     const createUser = await prisma.user.create({
         data: {
             name: fullName,
             email: email,
-            address: address
-        }
+            address: address,
+        },
     })
     return createUser
 }

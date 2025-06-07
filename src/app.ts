@@ -6,7 +6,7 @@ const app = express()
 
 //use .env file
 let dotenv = require('dotenv').config()
-const port = dotenv['parsed'].PORT||3000
+const port = dotenv['parsed'].PORT||8000
 
 
 //config static file
