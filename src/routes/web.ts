@@ -8,6 +8,7 @@ import {
     handleUpdateUser
 } from 'controllers/user.controller'
 import { updateUserById } from 'services/user.services'
+import { getDashboardPage } from 'controllers/admin/dashboard.controller'
 const router = express.Router()
 
 const webRoute = (app: Express) => {
@@ -25,7 +26,7 @@ const webRoute = (app: Express) => {
     router.post('/handle-update-user/:id', handleUpdateUser)
 
     // Admin routes
-    router.get("/admin", getHomePage);
+    router.get("/admin", getDashboardPage);
 
 
     app.use('/', router)
