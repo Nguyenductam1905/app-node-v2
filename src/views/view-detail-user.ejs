@@ -18,12 +18,12 @@
         <form action="/handle-update-user/<%= user.id %>" method="post">
             <div class="mb-3">
                 <label class="form-label">Name:</label>
-                <input value="<%= user.name %>" name="name" type="text" class="form-control"
+                <input value="<%= user.fullName %>" name="name" type="text" class="form-control"
                     placeholder="your name">
             </div>
             <div class="mb-3">
                 <label class="form-label">Email:</label>
-                <input value="<%= user.email %>" name="email" type="email" class="form-control"
+                <input value="<%= user.username %>" name="email" type="email" class="form-control"
                     placeholder="name@example.com">
             </div>
             <div class="mb-3">

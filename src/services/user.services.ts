@@ -1,16 +1,18 @@
 import { PrismaClient } from "generated/prisma";
-import { prisma } from "models/client";
-import connection from "models/database";
+import connection from "src/config/database";
 
 const handleCreateUser = async (fullName: string, email: string, address: string) => {
     const prisma = new PrismaClient();
     const createUser = await prisma.user.create({
         data: {
-            name: fullName,
-            email: email,
+            fullName: fullName,
+            username: email,
             address: address,
-            
-        },
+            password: "",
+            accountType: "",
+            phone: "",
+            avatar: ""
+        }
     })
     return createUser
 }
@@ -33,24 +35,28 @@ const deleteUserById = async (id: number) => {
 const getUserById = async (id: number) => {
     const prisma = new PrismaClient();
     const result = await prisma.user.findUnique({
-    where: {
-        id: id,
-    },
+        where: {
+            id: id,
+        },
     });
-      console.log(result);
+    console.log(result);
 
     return result
 }
 
-const updateUserById = async (id: number, name: string, email: string, address: string) => {
+const updateUserById = async (id: number, fullName: string, email: string, address: string) => {
     const prisma = new PrismaClient();
     const user = await prisma.user.update({
         where: { id: id },
-        data: { 
-            name: name, 
-            email: email, 
-            address: address 
-        },
+        data: {
+            fullName: fullName,
+            username: email,
+            address: address,
+            password: "",
+            accountType: "",
+            phone: "",
+            avatar: ""
+        }
     });
     console.log(user);
     return user

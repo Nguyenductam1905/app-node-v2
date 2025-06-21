@@ -1,6 +1,7 @@
 import express from 'express'
-import router from './routes/web'
-import webRoute from './routes/web'
+// import router from './routes/web'
+import webRoute from 'routes/web'
+import initdatabase from 'src/config/seed'
 
 const app = express()
 
@@ -24,6 +25,9 @@ app.use(express.json())
 
 //route
 webRoute(app)
+
+//seeding data
+initdatabase()
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
