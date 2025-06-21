@@ -24,6 +24,10 @@ const webRoute = (app: Express) => {
 
     router.post('/handle-update-user/:id', handleUpdateUser)
 
+    // Admin routes
+    router.get("/admin", getHomePage);
+
+
     app.use('/', router)
 
 }
