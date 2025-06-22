@@ -6,6 +6,15 @@ const getDashboardPage = async (req: Request, res: Response) =>{
 }
 
 const getAdminUserPage = async (req: Request, res: Response) =>{
-    return res.render("admin/user/show")
+    return res.render("admin/user/show.ejs")
 }
-export {getDashboardPage, getAdminUserPage}
+
+const getAdminOrderPage = async (req: Request, res: Response) =>{
+    return res.render("admin/order/show.ejs")
+}
+
+const getAdminProductPage = async (req: Request, res: Response) =>{
+    return res.render("admin/product/show.ejs")
+}
+
+export {getDashboardPage, getAdminUserPage, getAdminOrderPage, getAdminProductPage}
